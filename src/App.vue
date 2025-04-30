@@ -31,6 +31,17 @@ const filterData = computed(() => {
       </label>
     </div>
 
+    <div class="allData">
+      <p>Daftar Kegiatan</p>
+      <ul>
+        <li v-for="(todo, index) in filterData" :key="index">
+          <input type="checkbox" v-model="todo.done" />
+          <span :class="{ completed: todo.done }">{{ todo.text }}</span>
+
+        </li>
+      </ul>
+    </div>
+    
   </div>
 </template>
 

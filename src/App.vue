@@ -15,6 +15,10 @@ const addData = () => {
 const filterData = computed(() => {
   return dataIncomplete.value ? data.value.filter((todo) => !todo.done) : data.value;
 });
+
+const removeData = (index) => {
+  data.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -37,7 +41,7 @@ const filterData = computed(() => {
         <li v-for="(todo, index) in filterData" :key="index">
           <input type="checkbox" v-model="todo.done" />
           <span :class="{ completed: todo.done }">{{ todo.text }}</span>
-
+          <button @click="removeData(index)">Hapus</button>
         </li>
       </ul>
     </div>
